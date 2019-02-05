@@ -6,6 +6,9 @@ import history from "./history"
 import sagaMiddleware from './sagaMiddleware'
 import sagas from './sagas'
 
+import './style/global.css'
+import './style/media.css'
+
 // prepare the app for rendering
 const app = Application(store, history)
 

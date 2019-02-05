@@ -2,26 +2,46 @@ import React from 'react'
 
 export const spacings = {
   normal: {
-    padding: '1em',
+    header: {
+      padding: '1em',
+    },
     left: {
-      width: '40em',
+      width: '16em',
+      padding: '1em',
+    },
+    main: {
+      padding: '1em',
     },
     right: {
-      width: '40em',
+      width: '16em',
+      padding: '1em',
     },
+    footer: {
+      padding: '1em'
+    }
   },
   compact: {
-    padding: '0.618em',
+    header: {
+      padding: '0.618em',
+    },
     left: {
-      width: '30em',
+      width: '10em',
+      padding: '0.618em',
+    },
+    main: {
+      padding: '0.618em',
     },
     right: {
-      width: '30em',
+      width: '10em',
+      padding: '0.618em',
     },
+    footer: {
+      padding: '0.618em',
+    }
   },
 }
 
-export const defaultSpacingContext = spacings.normal
+export const defaultSpacingContext = spacings.compact
 
 export const SpacingContext = React.createContext(
   defaultSpacingContext // default
