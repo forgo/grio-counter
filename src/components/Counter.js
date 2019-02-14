@@ -40,15 +40,16 @@ export default class Counter extends React.Component {
   render() {
     const { count, incrementCounter, calculating } = this.props
 
+    console.log("count", count)
     return (
       <div style={styleContainer}>
         <div>
-          <div style={styleCount}>{count}</div>
+          <div style={styleCount}>{count.toString()}</div>
           <Button
             style={styleButton}
             text="Increment"
             title="Increment counter"
-            onClick={() => incrementCounter(count)}
+            onClick={() => incrementCounter(parseInt(count))}
             disabled={calculating}
             disabledText={'Calculating...'}
           />

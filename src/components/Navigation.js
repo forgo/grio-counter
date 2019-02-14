@@ -20,17 +20,42 @@ const styleLink = {
 }
 
 export default class Navigation extends React.Component {
+
+  handleLogout = event => {
+    const { logout } = this.props
+    if(logout) {
+      logout()
+    }
+  }
+
   render() {
-    const { push } = this.props
+    const { loggingIn, loggedIn, user, logout } = this.props
+    console.log("props", this.props)
+
+    const linkHome = (
+      <li style={styleListItem}>
+        <A path={ROUTE.home.path}>Home</A>
+      </li>
+    )
+
+    const linkLogin = loggedIn ? null : (
+      <li style={styleListItem}>
+        <A path={ROUTE.login.path}>Login</A>
+      </li>
+    )
+
+    const linkLogout = loggedIn ? (
+      <li style={styleListItem}>
+        <a onClick={this.handleLogout}>Logout</a>
+      </li>
+    ) : null
+
     return (
       <nav role="navigation">
         <ul style={styleList}>
-          <li style={styleListItem}>
-            <A path={ROUTE.home.path}>Home</A>
-          </li>
-          <li style={styleListItem}>
-            <A path={ROUTE.login.path}>Login</A>
-          </li>
+          {linkHome}
+          {linkLogin}
+          {linkLogout}
         </ul>
       </nav>
     )

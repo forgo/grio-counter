@@ -32,15 +32,22 @@ const styleButton = {
 
 class Login extends React.Component {
   handleSubmit = event => {
+
+    const { login } = this.props
+
     // prevent form submissions from
     // unwanted places like ENTER from clear button in inputs
     event.preventDefault()
-    const email = event.target.email.value
-    const password = event.target.password.value
-    console.log(`email: ${email}, password: ${password}`)
+
+    if(login) {
+      console.log("login", login)
+      const username = event.target.username.value
+      const password = event.target.password.value
+      login(username, password)
+    }
   }
 
-  handleEnterKeyDownEmail = value => {
+  handleEnterKeyDownUsername = value => {
     this.password.input.focus()
   }
 
@@ -53,16 +60,16 @@ class Login extends React.Component {
     return (
       <div style={styleContainer}>
         <form style={styleForm} onSubmit={this.handleSubmit}>
-          <label htmlFor="email" style={styleLabel}>
-            email
+          <label htmlFor="username" style={styleLabel}>
+            username
           </label>
           <Input
-            id="email"
+            id="username"
             type="text"
-            name="email"
+            name="username"
             placeholder="your_username"
-            onEnterKeyDown={this.handleEnterKeyDownEmail}
-            ref={x => (this.email = x)}
+            onEnterKeyDown={this.handleEnterKeyDownUsername}
+            ref={x => (this.username = x)}
             styleInputContainer={styleInputContainer}
           />
           <label htmlFor="password" style={styleLabel}>

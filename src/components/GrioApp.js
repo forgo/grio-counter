@@ -1,22 +1,29 @@
 import React from 'react'
 import Layout from '../layout/Layout'
-import Navigation from './Navigation'
+import ErrorContainer from './ErrorContainer'
+import NavigationContainer from './NavigationContainer'
+import LoginRequired from './LoginRequired'
 import CounterContainer from './CounterContainer'
 
 import { Route, Switch } from 'react-router'
 import { ROUTE } from '../routing'
 
-import Login from './Login'
+import LoginContainer from './LoginContainer'
 import NotFound from './NotFound'
 
 class GrioApp extends React.Component {
   render() {
-    const navigation = <Navigation />
+
+    const { loggedIn, error } = this.props
+
+    const alert = error ? <ErrorContainer /> : null
+
+    const navigation = <NavigationContainer />
 
     const main = (
       <Switch>
-        <Route exact path={ROUTE.home.path} component={CounterContainer} />
-        <Route exact path={ROUTE.login.path} component={Login} />
+        <Route exact path={ROUTE.home.path} component={loggedIn ? CounterContainer : LoginRequired} />
+        <Route exact path={ROUTE.login.path} component={LoginContainer} />
         <Route exact path={ROUTE.error.path} component={Error} />
         <Route component={NotFound} />
       </Switch>
@@ -27,6 +34,7 @@ class GrioApp extends React.Component {
     return (
       <Layout
         header={navigation}
+        alert={alert}
         left={null}
         main={main}
         right={null}

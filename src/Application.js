@@ -1,7 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import GrioApp from './components/GrioApp'
+import GrioAppContainer from './components/GrioAppContainer'
 
 // this higher-order component is kept separate from index.js
 // to parameterize the store and history for tests
@@ -11,7 +11,7 @@ const Application = (store, history) => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <GrioApp />
+        <GrioAppContainer />
       </ConnectedRouter>
     </Provider>
   )

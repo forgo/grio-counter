@@ -4,6 +4,7 @@ import FlexRow from '../common/FlexRow'
 import ThemeProvider from '../contexts/ThemeProvider'
 import Background from './Background'
 import Header from './Header'
+import Alert from './Alert'
 import Left from './Left'
 import Main from './Main'
 import Right from './Right'
@@ -25,9 +26,10 @@ const styleFlexRow = {
 
 export default class Layout extends React.Component {
   render() {
-    const { header, left, main, right, footer } = this.props
+    const { header, alert, left, main, right, footer } = this.props
 
     const headerElement = header ? <Header>{header}</Header> : null
+    const alertElement = alert ? <Alert>{alert}</Alert> : null
     const leftElement = left ? <Left>{left}</Left> : null
     const mainElement = main ? <Main>{main}</Main> : null
     const rightElement = right ? <Right>{right}</Right> : null
@@ -38,6 +40,7 @@ export default class Layout extends React.Component {
         <Background>
           <FlexColumn style={styleFlexColumn}>
             {headerElement}
+            {alertElement}
             <FlexRow style={styleFlexRow}>
               {leftElement}
               {mainElement}

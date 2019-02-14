@@ -5,6 +5,9 @@ export const spacings = {
     header: {
       padding: '1em',
     },
+    alert: {
+      padding: '1em',
+    },
     left: {
       width: '16em',
       padding: '1em',
@@ -22,6 +25,9 @@ export const spacings = {
   },
   compact: {
     header: {
+      padding: '0.618em',
+    },
+    alert: {
       padding: '0.618em',
     },
     left: {

@@ -3,8 +3,9 @@ import { connectRouter } from 'connected-react-router'
 
 export const RESET_STORE = 'reset_store'
 
-// import login from './login'
+import auth from './auth'
 import counter from './counter'
+import error from './error'
 
 export default history => {
   return (state, action) => {
@@ -15,8 +16,9 @@ export default history => {
 
     const appReducer = combineReducers({
       router: connectRouter(history),
-      // login,
+      auth,
       counter,
+      error
     })
     return appReducer(state, action)
   }

@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects'
-// import loginSaga from './loginSaga'
+import authSaga from './authSaga'
 import counterSaga from './counterSaga'
 
 export default function* sagas() {
-  yield all([/*loginSaga(),*/ counterSaga()])
+  yield all([authSaga(), counterSaga()])
 }

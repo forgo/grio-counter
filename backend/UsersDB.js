@@ -10,11 +10,11 @@ const UsersDB = db.addCollection('users')
 // create mock user credentials for demo
 const seed_users = [
   {
-    email: 'elliott_user',
+    username: 'elliott_user',
     password: 'elliott_password'
   },
   {
-    email: 'test_user',
+    username: 'test_user',
     password: 'test_password'
   }
 ]
@@ -24,7 +24,7 @@ seed_users.forEach(user => {
   User.passwordHash(user.password, (err, hash) => {
     if(!err) {
       UsersDB.insert({
-        email: user.email,
+        username: user.username,
         hash: hash
       })
     }

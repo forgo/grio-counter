@@ -8,6 +8,7 @@ import {
 export const initialState = Immutable({
   count: 0,
   calculating: false,
+  error: undefined
 })
 
 export default function counter(state = initialState, action) {
@@ -21,10 +22,10 @@ export default function counter(state = initialState, action) {
         .set('count', action.count)
       return responseSuccessState
     case INCREMENT_COUNTER_FAILURE:
-      const error = action.error
-      console.log('error', JSON.stringify(error, null, 2))
-      // const { } = error
-      const responseFailureState = state.set('calculating', false)
+      console.log('error', JSON.stringify(action.error, null, 2))
+      const responseFailureState = state
+        .set('calculating', false)
+        .set('error', JSON.stringify(action.error, null, 2))
       return responseFailureState
     default:
       return state
