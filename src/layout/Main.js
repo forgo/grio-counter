@@ -1,7 +1,6 @@
 import React from 'react'
 import { withTheme } from '../contexts/ThemeConsumer'
 
-
 const style = (background, foreground, padding, boxShadow) => {
   return {
     background: background ? background : 'none',
@@ -27,7 +26,11 @@ class Main extends React.Component {
     const { boxShadow } = shadowContext.main
 
     return (
-      <main id="mainBlock" tabIndex="-1" style={style(background, foreground, padding, boxShadow)}>
+      <main
+        id="mainBlock"
+        tabIndex="-1"
+        style={style(background, foreground, padding, boxShadow)}
+      >
         {this.props.children}
       </main>
     )

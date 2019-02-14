@@ -1,8 +1,8 @@
 import React from 'react'
 
-const boxShadowNormal = '0.05em 0.05em 0.1em rgba(0,0,0,0.309)'
-const boxShadowSoft = '0px 0.1em 0.1em rgba(0,0,0,0.105)'
-const boxShadowSharp = '0em 0.05em 0.05em rgba(0,0,0,0.618)'
+export const boxShadowNormal = '0.05em 0.05em 0.1em rgba(0,0,0,0.309)'
+export const boxShadowSoft = '0px 0.1em 0.1em rgba(0,0,0,0.105)'
+export const boxShadowSharp = '0em 0.05em 0.05em rgba(0,0,0,0.618)'
 
 export const shadows = {
   normal: {
@@ -20,7 +20,7 @@ export const shadows = {
     },
     footer: {
       boxShadow: 'none',
-    }
+    },
   },
   soft: {
     header: {
@@ -37,7 +37,7 @@ export const shadows = {
     },
     footer: {
       boxShadow: 'none',
-    }
+    },
   },
   sharp: {
     header: {
@@ -54,11 +54,11 @@ export const shadows = {
     },
     footer: {
       boxShadow: 'none',
-    }
-  }
+    },
+  },
 }
 
-export const defaultShadowContext = shadows.sharp
+export const defaultShadowContext = shadows.normal
 
 export const ShadowContext = React.createContext(
   defaultShadowContext // default

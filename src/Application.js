@@ -1,12 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import {Route, Switch} from 'react-router'
-import {ROUTE} from './routing'
-
-import GrioCounter from './components/GrioCounter'
-import Login from './components/Login'
-import NotFound from './components/NotFound'
+import GrioApp from './components/GrioApp'
 
 // this higher-order component is kept separate from index.js
 // to parameterize the store and history for tests
@@ -16,14 +11,7 @@ const Application = (store, history) => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <>
-          <Switch>
-            <Route exact path={ROUTE.home.path} component={GrioCounter} />
-            <Route exact path={ROUTE.login.path} component={Login} />
-            <Route exact path={ROUTE.error.path} component={Error} />
-            <Route component={NotFound} />
-          </Switch>
-        </>
+        <GrioApp />
       </ConnectedRouter>
     </Provider>
   )

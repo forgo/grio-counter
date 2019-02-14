@@ -3,8 +3,8 @@ import ReactDOM from "react-dom"
 import Application from "./Application"
 import store from "./store"
 import history from "./history"
-import sagaMiddleware from './sagaMiddleware'
-import sagas from './sagas'
+import sagaMiddleware from './sagas/sagaMiddleware'
+import sagas from './sagas/sagas'
 
 import './style/global.css'
 import './style/media.css'

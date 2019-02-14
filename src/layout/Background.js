@@ -4,7 +4,7 @@ import { withTheme } from '../contexts/ThemeConsumer'
 const pattern = require('../img/pattern.png')
 
 const stylePattern = {
-  background: `url(${pattern}) repeat`,
+  // background: `url(${pattern}) repeat`,
   backgroundSize: '1.618em',
 }
 

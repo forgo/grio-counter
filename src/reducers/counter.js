@@ -1,9 +1,31 @@
-export default function counter(state = 0, action) {
+import Immutable from 'seamless-immutable'
+import {
+  INCREMENT_COUNTER,
+  INCREMENT_COUNTER_SUCCESS,
+  INCREMENT_COUNTER_FAILURE,
+} from '../actions/CounterActions'
+
+export const initialState = Immutable({
+  count: 0,
+  calculating: false,
+})
+
+export default function counter(state = initialState, action) {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
+    case INCREMENT_COUNTER:
+      const requestState = state.set('calculating', true)
+      return requestState
+    case INCREMENT_COUNTER_SUCCESS:
+      const responseSuccessState = state
+        .set('calculating', false)
+        .set('count', action.count)
+      return responseSuccessState
+    case INCREMENT_COUNTER_FAILURE:
+      const error = action.error
+      console.log('error', JSON.stringify(error, null, 2))
+      // const { } = error
+      const responseFailureState = state.set('calculating', false)
+      return responseFailureState
     default:
       return state
   }

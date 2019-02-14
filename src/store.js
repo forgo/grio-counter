@@ -3,7 +3,7 @@ import {connectRouter, routerMiddleware} from 'connected-react-router'
 import Immutable from 'seamless-immutable'
 import history from './history'
 import createRootReducer from './reducers/reducer'
-import sagaMiddleware from './sagaMiddleware'
+import sagaMiddleware from './sagas/sagaMiddleware'
 
 const getCompose = () => {
   if (

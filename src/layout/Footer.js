@@ -23,7 +23,10 @@ class Footer extends React.Component {
     // ARIA "contentinfo" Landmark
     // https://www.w3.org/TR/wai-aria-practices/examples/landmarks/contentinfo.html
     return (
-      <footer role="contentInfo" style={style(background, foreground, padding, boxShadow)}>
+      <footer
+        role="contentInfo"
+        style={style(background, foreground, padding, boxShadow)}
+      >
         {this.props.children}
       </footer>
     )

@@ -17,8 +17,8 @@ export const spacings = {
       padding: '1em',
     },
     footer: {
-      padding: '1em'
-    }
+      padding: '1em',
+    },
   },
   compact: {
     header: {
@@ -37,7 +37,7 @@ export const spacings = {
     },
     footer: {
       padding: '0.618em',
-    }
+    },
   },
 }
 

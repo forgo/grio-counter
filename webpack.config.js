@@ -62,7 +62,13 @@ module.exports = env => {
         index: '/',
       },
       disableHostCheck: true,
-      hot: true
+      hot: true,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          // pathRewrite: {'^/api' : ''}
+        }
+      }
     },
     module: {
       rules: [

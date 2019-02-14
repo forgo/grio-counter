@@ -27,17 +27,23 @@ export default class Layout extends React.Component {
   render() {
     const { header, left, main, right, footer } = this.props
 
+    const headerElement = header ? <Header>{header}</Header> : null
+    const leftElement = left ? <Left>{left}</Left> : null
+    const mainElement = main ? <Main>{main}</Main> : null
+    const rightElement = right ? <Right>{right}</Right> : null
+    const footerElement = footer ? <Footer>{footer}</Footer> : null
+
     return (
       <ThemeProvider>
         <Background>
           <FlexColumn style={styleFlexColumn}>
-            <Header>{header}</Header>
+            {headerElement}
             <FlexRow style={styleFlexRow}>
-              <Left>{left}</Left>
-              <Main>{main}</Main>
-              <Right>{right}</Right>
+              {leftElement}
+              {mainElement}
+              {rightElement}
             </FlexRow>
-            <Footer>{footer}</Footer>
+            {footerElement}
           </FlexColumn>
         </Background>
       </ThemeProvider>

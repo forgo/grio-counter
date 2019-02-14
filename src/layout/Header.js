@@ -23,7 +23,10 @@ class Header extends React.Component {
     // ARIA "banner" Landmark
     // https://www.w3.org/TR/wai-aria-practices/examples/landmarks/banner.html
     return (
-      <header role="banner" style={style(background, foreground, padding, boxShadow)}>
+      <header
+        role="banner"
+        style={style(background, foreground, padding, boxShadow)}
+      >
         {this.props.children}
       </header>
     )

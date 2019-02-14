@@ -6,9 +6,8 @@ export const RESET_STORE = 'reset_store'
 // import login from './login'
 import counter from './counter'
 
-export default (history) => {
+export default history => {
   return (state, action) => {
-
     // allow a top-level reducer action to trigger all reducers to initial state
     if (action.type === RESET_STORE) {
       state = undefined

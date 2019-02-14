@@ -2,8 +2,6 @@ import React from 'react'
 
 export const colors = {
   light: {
-    foreground: '#222222',
-    background: '#F9F9F9',
     header: {
       foreground: '#222222',
       background: '#F9F9F9',
@@ -23,11 +21,10 @@ export const colors = {
     footer: {
       foreground: '#222222',
       background: '#F9F9F9',
-    }
+    },
   },
   dark: {
-    foreground: '#ffffff',
-    background: '#222222',
+    background: '',
     header: {
       foreground: '#F9F9F9',
       background: '#222222',
@@ -47,10 +44,10 @@ export const colors = {
     footer: {
       foreground: '#F9F9F9',
       background: '#222222',
-    }
+    },
   },
 }
 
-export const defaultColorContext = colors.light
+export const defaultColorContext = colors.dark
 
 export const ColorContext = React.createContext(defaultColorContext)
