@@ -28,33 +28,25 @@ export default class Navigation extends React.Component {
   }
 
   render() {
-    const { loggingIn, loggedIn, user, logout } = this.props
+    const { loggingIn, loggedIn, user, logout, location } = this.props
 
-    const linkHome = (
-      <li style={styleListItem}>
-        <A path={ROUTE.home.path}>Home</A>
-      </li>
-    )
+    const onLoginPage = location.pathname === ROUTE.login.path
 
-    const linkLogin = loggedIn ? null : (
+    const linkLogin = onLoginPage ? null : (
       <li style={styleListItem}>
         <A path={ROUTE.login.path}>Login</A>
       </li>
     )
 
-    const linkLogout = loggedIn ? (
+    const linkLogout = (
       <li style={styleListItem}>
-        <a onClick={this.handleLogout}>Logout</a>
+        <A onClick={this.handleLogout}>Logout</A>
       </li>
-    ) : null
+    )
 
     return (
       <nav role="navigation">
-        <ul style={styleList}>
-          {linkHome}
-          {linkLogin}
-          {linkLogout}
-        </ul>
+        <ul style={styleList}>{loggedIn ? linkLogout : linkLogin}</ul>
       </nav>
     )
   }

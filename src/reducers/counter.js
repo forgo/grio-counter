@@ -22,7 +22,6 @@ export default function counter(state = initialState, action) {
         .set('count', action.count)
       return responseSuccessState
     case INCREMENT_COUNTER_FAILURE:
-      console.log('error', JSON.stringify(action.error, null, 2))
       const responseFailureState = state
         .set('calculating', false)
         .set('error', JSON.stringify(action.error, null, 2))

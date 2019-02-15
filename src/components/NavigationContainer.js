@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import Navigation from './Navigation'
 import { logout } from '../actions/AuthActions'
 
@@ -16,8 +17,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const NavigationContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navigation)
+const NavigationContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navigation)
+)
 export default NavigationContainer

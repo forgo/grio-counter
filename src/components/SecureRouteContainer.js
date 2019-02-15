@@ -1,20 +1,19 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import GrioApp from './GrioApp'
+import SecureRoute from './SecureRoute'
 
 const mapStateToProps = state => {
   return {
     loggedIn: state.auth.loggedIn,
     loggingIn: state.auth.loggingIn,
-    error: state.error.message,
   }
 }
 
-const GrioAppContainer = withRouter(
+const SecureRouteContainer = withRouter(
   connect(
     mapStateToProps,
     null
-  )(GrioApp)
+  )(SecureRoute)
 )
-export default GrioAppContainer
+export default SecureRouteContainer

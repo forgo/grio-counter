@@ -11,7 +11,7 @@ import { errorShow, errorHide } from '../actions/ErrorActions'
 import { push } from 'connected-react-router'
 import { ROUTE } from '../routing'
 
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import Api from '../api/Api'
 
 function delete_cookie(name) {
@@ -25,7 +25,7 @@ function* whoAmISaga(action) {
     // hide any login errors if they had not been manually dismissed
     yield put(errorHide())
     // redirect to home route after successful login
-    yield put(push('/'))
+    yield put(push(ROUTE.home.path))
   } catch (error) {
     yield put(whoAmIFailure(error))
     // yield put(errorShow(error.response.data.error))
@@ -34,12 +34,15 @@ function* whoAmISaga(action) {
 
 function* loginSaga(action) {
   try {
+    // insert artificial 2-second delay
+    yield delay(2000)
+
     const user = yield call(Api.login, action.username, action.password)
     yield put(loginSuccess(user))
     // hide any login errors if they had not been manually dismissed
     yield put(errorHide())
     // redirect to home route after successful login
-    yield put(push('/'))
+    yield put(push(ROUTE.home.path))
   } catch (error) {
     yield put(loginFailure(error))
     yield put(errorShow(error.response.data.error))
@@ -50,6 +53,8 @@ function* logoutSaga(action) {
   try {
     const logoutResponse = yield call(Api.logout)
     delete_cookie('token')
+    // redirect to home route after successful login
+    yield put(push(ROUTE.login.path))
   } catch (error) {}
 }
 

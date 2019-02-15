@@ -7,14 +7,17 @@ const styleLink = {
 
 export default class Link extends React.Component {
   render() {
-    const { children, path, push } = this.props
+    const { children, onClick, path, push } = this.props
+
+    let action = onClick
+    if (path) {
+      action = () => {
+        push(path)
+      }
+    }
+
     return (
-      <a
-        style={styleLink}
-        onClick={() => {
-          push(path)
-        }}
-      >
+      <a style={styleLink} onClick={action}>
         {children}
       </a>
     )

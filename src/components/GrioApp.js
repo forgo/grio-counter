@@ -1,4 +1,5 @@
 import React from 'react'
+import SecureRouteContainer from './SecureRouteContainer'
 import Layout from '../layout/Layout'
 import ErrorContainer from './ErrorContainer'
 import NavigationContainer from './NavigationContainer'
@@ -19,12 +20,19 @@ class GrioApp extends React.Component {
 
     const navigation = <NavigationContainer />
 
+    const header = (
+      <div>
+        GRIO COUNTER
+        {navigation}
+      </div>
+    )
+
     const main = (
       <Switch>
-        <Route
+        <SecureRouteContainer
           exact
           path={ROUTE.home.path}
-          component={loggedIn ? CounterContainer : LoginRequired}
+          component={CounterContainer}
         />
         <Route exact path={ROUTE.login.path} component={LoginContainer} />
         <Route exact path={ROUTE.error.path} component={Error} />
@@ -36,7 +44,7 @@ class GrioApp extends React.Component {
 
     return (
       <Layout
-        header={navigation}
+        header={header}
         alert={alert}
         left={null}
         main={main}
