@@ -77,14 +77,23 @@ app.post('/api/logout', function(req, res) {
   res.clearCookie('token')
 })
 
-app.get('/api/whoAmI', withAuth)
+app.get('/api/whoAmI', withAuth, function(req, res) {
+  console.log("/api/whoAmI... req.username=", JSON.stringify(req.username, null, 3))
+  res
+    .status(HttpStatus.OK)
+    .json({ user: req.username })
+
+
+})
 
 app.get('/api/increment', withAuth, function(req, res) {
   console.log("/api/increment... req.body=", JSON.stringify(req.body, null, 3))
   const { count } = req.query
   const countInteger = parseInt(count)
   if(count && Number.isInteger(countInteger)) {
-    res.json({ count: countInteger === 0 ? 1 : countInteger * 2 })
+    res
+      .status(HttpStatus.OK)
+      .json({ count: countInteger === 0 ? 1 : countInteger * 2 })
   }
   else {
     res

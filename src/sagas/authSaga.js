@@ -22,6 +22,7 @@ function* whoAmISaga(action) {
     const user = yield call(Api.whoAmI)
     console.log("whoami success, user", JSON.stringify(user, null ,3))
 
+    
     yield put(whoAmISuccess(user))
 
     // hide any login errors if they had not been manually dismissed
