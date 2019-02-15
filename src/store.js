@@ -1,5 +1,5 @@
-import {createStore, applyMiddleware, compose} from 'redux'
-import {connectRouter, routerMiddleware} from 'connected-react-router'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import Immutable from 'seamless-immutable'
 import history from './history'
 import createRootReducer from './reducers/reducer'

@@ -11,21 +11,21 @@ const UsersDB = db.addCollection('users')
 const seed_users = [
   {
     username: 'elliott_user',
-    password: 'elliott_password'
+    password: 'elliott_password',
   },
   {
     username: 'test_user',
-    password: 'test_password'
-  }
+    password: 'test_password',
+  },
 ]
 
 // populate user db with users and password hashes, if possible
 seed_users.forEach(user => {
   User.passwordHash(user.password, (err, hash) => {
-    if(!err) {
+    if (!err) {
       UsersDB.insert({
         username: user.username,
-        hash: hash
+        hash: hash,
       })
     }
   })

@@ -1,8 +1,8 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import Application from "./Application"
-import store from "./store"
-import history from "./history"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Application from './Application'
+import store from './store'
+import history from './history'
 import sagaMiddleware from './sagas/sagaMiddleware'
 import sagas from './sagas/sagas'
 import { whoAmI } from './actions/AuthActions'

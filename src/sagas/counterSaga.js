@@ -14,7 +14,6 @@ function* incrementCounterSaga(action) {
     const nextCount = incrementReponse.data.count
     yield put(incrementCounterSuccess(nextCount))
   } catch (error) {
-    console.log('catch error:', error)
     yield put(incrementCounterFailure(error))
     yield put(errorShow(error.response.data.error))
   }

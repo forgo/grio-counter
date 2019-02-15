@@ -21,6 +21,7 @@ const styleDefault = {
 
 const styleHoverDefault = {
   background: `linear-gradient(${bgColorDark}, ${bgColor})`,
+  backgroundSize: 'cover',
 }
 
 const stylePressDefault = {

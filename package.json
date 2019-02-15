@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node backend/server.js",
     "dev": "webpack-dev-server --mode development --progress --colors",
-    "format": "prettier --config .prettierrc.json --write src/**/*.js",
+    "format": "prettier --config .prettierrc.json --write 'src/**/*.js' 'backend/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,4 +1,4 @@
-import {createBrowserHistory, createMemoryHistory} from 'history'
+import { createBrowserHistory, createMemoryHistory } from 'history'
 
 // - Calling createBrowserHistory w/no browser causes issues with tests, even using 'jsdom' and 'jsdom-global'.
 // - This flag will never be set in prod because NODE_ENV would be undefined in our static bundle anyway.
