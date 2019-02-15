@@ -8,7 +8,7 @@ import {
 export const initialState = Immutable({
   count: 0,
   calculating: false,
-  error: undefined
+  error: undefined,
 })
 
 export default function counter(state = initialState, action) {

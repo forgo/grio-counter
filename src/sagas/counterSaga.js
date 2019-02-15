@@ -3,9 +3,7 @@ import {
   incrementCounterSuccess,
   incrementCounterFailure,
 } from '../actions/CounterActions'
-import {
-  errorShow
-} from '../actions/ErrorActions'
+import { errorShow } from '../actions/ErrorActions'
 
 import { call, put, takeLatest } from 'redux-saga/effects'
 import Api from '../api/Api'

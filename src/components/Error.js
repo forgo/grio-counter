@@ -3,7 +3,7 @@ import React from 'react'
 class Error extends React.Component {
   render() {
     const { error, errorHide } = this.props
-    if(error) {
+    if (error) {
       return (
         <div>
           <span>{error}</span>

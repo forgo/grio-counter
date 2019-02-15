@@ -1,8 +1,8 @@
 export const ERROR_SHOW = 'ERROR_SHOW'
-export const errorShow = (message) => {
+export const errorShow = message => {
   return {
     type: ERROR_SHOW,
-    message: message
+    message: message,
   }
 }
 

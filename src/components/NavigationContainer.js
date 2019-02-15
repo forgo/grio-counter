@@ -6,7 +6,7 @@ const mapStateToProps = state => {
   return {
     loggingIn: state.auth.loggingIn,
     loggedIn: state.auth.loggedIn,
-    user: state.auth.user
+    user: state.auth.user,
   }
 }
 

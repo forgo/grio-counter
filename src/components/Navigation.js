@@ -20,17 +20,16 @@ const styleLink = {
 }
 
 export default class Navigation extends React.Component {
-
   handleLogout = event => {
     const { logout } = this.props
-    if(logout) {
+    if (logout) {
       logout()
     }
   }
 
   render() {
     const { loggingIn, loggedIn, user, logout } = this.props
-    console.log("props", this.props)
+    console.log('props', this.props)
 
     const linkHome = (
       <li style={styleListItem}>

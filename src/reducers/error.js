@@ -1,11 +1,8 @@
 import Immutable from 'seamless-immutable'
-import {
-  ERROR_SHOW,
-  ERROR_HIDE,
-} from '../actions/ErrorActions'
+import { ERROR_SHOW, ERROR_HIDE } from '../actions/ErrorActions'
 
 export const initialState = Immutable({
-  message: undefined
+  message: undefined,
 })
 
 export default function error(state = initialState, action) {

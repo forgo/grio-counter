@@ -32,15 +32,14 @@ const styleButton = {
 
 class Login extends React.Component {
   handleSubmit = event => {
-
     const { login } = this.props
 
     // prevent form submissions from
     // unwanted places like ENTER from clear button in inputs
     event.preventDefault()
 
-    if(login) {
-      console.log("login", login)
+    if (login) {
+      console.log('login', login)
       const username = event.target.username.value
       const password = event.target.password.value
       login(username, password)

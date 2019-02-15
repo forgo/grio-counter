@@ -30,7 +30,7 @@ function* whoAmI() {
 function* login(username, password) {
   const response = yield axios.post('/api/login', {
     username: username,
-    password: password
+    password: password,
   })
   return response
 }
@@ -39,8 +39,6 @@ function* incrementCounter(count) {
   // insert artificial 2-second delay
   // yield delay(500)
   // return count === 0 ? 1 : count * 2
-
-
 
   const uri = `/api/increment?count=${count}`
   const uriEncoded = encodeURI(uri)

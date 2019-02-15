@@ -13,7 +13,6 @@ import NotFound from './NotFound'
 
 class GrioApp extends React.Component {
   render() {
-
     const { loggedIn, error } = this.props
 
     const alert = error ? <ErrorContainer /> : null
@@ -22,7 +21,11 @@ class GrioApp extends React.Component {
 
     const main = (
       <Switch>
-        <Route exact path={ROUTE.home.path} component={loggedIn ? CounterContainer : LoginRequired} />
+        <Route
+          exact
+          path={ROUTE.home.path}
+          component={loggedIn ? CounterContainer : LoginRequired}
+        />
         <Route exact path={ROUTE.login.path} component={LoginContainer} />
         <Route exact path={ROUTE.error.path} component={Error} />
         <Route component={NotFound} />

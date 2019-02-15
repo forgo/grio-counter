@@ -6,14 +6,14 @@ import {
   LOGIN,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT
+  LOGOUT,
 } from '../actions/AuthActions'
 
 export const initialState = Immutable({
   loggingIn: false,
   loggedIn: false,
   user: undefined,
-  error: undefined
+  error: undefined,
 })
 
 export default function auth(state = initialState, action) {
@@ -28,8 +28,7 @@ export default function auth(state = initialState, action) {
         .set('user', action.user)
       return waiSuccessState
     case WHO_AM_I_FAILURE:
-      const waiFailureState = state
-        .set('loggingIn', false)
+      const waiFailureState = state.set('loggingIn', false)
       return waiFailureState
     case LOGIN:
       const requestState = state.set('loggingIn', true)
@@ -47,9 +46,7 @@ export default function auth(state = initialState, action) {
         .set('error', JSON.stringify(action.error, null, 2))
       return responseFailureState
     case LOGOUT:
-      const logoutState = state
-        .set('user', undefined)
-        .set('loggedIn', false)
+      const logoutState = state.set('user', undefined).set('loggedIn', false)
       return logoutState
     default:
       return state

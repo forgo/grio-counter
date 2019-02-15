@@ -40,7 +40,7 @@ export default class Counter extends React.Component {
   render() {
     const { count, incrementCounter, calculating } = this.props
 
-    console.log("count", count)
+    console.log('count', count)
     return (
       <div style={styleContainer}>
         <div>

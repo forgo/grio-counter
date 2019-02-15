@@ -11,7 +11,11 @@ const styleContainer = {
 
 class LoginRequired extends React.Component {
   render() {
-    return <div style={styleContainer}>This feature is only available to logged in users.</div>
+    return (
+      <div style={styleContainer}>
+        This feature is only available to logged in users.
+      </div>
+    )
   }
 }
 export default LoginRequired

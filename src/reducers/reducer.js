@@ -18,7 +18,7 @@ export default history => {
       router: connectRouter(history),
       auth,
       counter,
-      error
+      error,
     })
     return appReducer(state, action)
   }

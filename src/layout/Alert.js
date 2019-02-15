@@ -21,10 +21,7 @@ class Alert extends React.Component {
     // ARIA "alert" role
     // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role
     return (
-      <div
-        role="alert"
-        style={style(background, foreground, padding)}
-      >
+      <div role="alert" style={style(background, foreground, padding)}>
         {this.props.children}
       </div>
     )
