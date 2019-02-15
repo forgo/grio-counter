@@ -40,7 +40,6 @@ export default function auth(state = initialState, action) {
         .set('user', action.user)
       return responseSuccessState
     case LOGIN_FAILURE:
-      console.log('error', JSON.stringify(action.error, null, 2))
       const responseFailureState = state
         .set('loggingIn', false)
         .set('error', JSON.stringify(action.error, null, 2))

@@ -1,6 +1,5 @@
 export const WHO_AM_I = 'WHO_AM_I'
 export const whoAmI = () => {
-  console.log('whoAmI ACTION')
   return {
     type: WHO_AM_I,
   }
@@ -33,7 +32,6 @@ export const login = (username, password) => {
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const loginSuccess = user => {
-  console.log('login_success user =', user)
   return {
     type: LOGIN_SUCCESS,
     user: user,

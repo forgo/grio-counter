@@ -75,7 +75,15 @@ app.post('/api/login', function(req, res) {
 })
 
 app.post('/api/logout', function(req, res) {
-  res.clearCookie('token')
+  const cookies = req.cookies
+  console.log('cookies', JSON.stringify(cookies, null, 2))
+  for (let prop in cookies) {
+    if (!cookies.hasOwnProperty(prop)) {
+      continue
+    }
+    res.cookie(prop, '', { expires: new Date(0) })
+  }
+  res.redirect('/')
 })
 
 app.get('/api/whoAmI', withAuth, function(req, res) {

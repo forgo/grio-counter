@@ -39,7 +39,6 @@ class Login extends React.Component {
     event.preventDefault()
 
     if (login) {
-      console.log('login', login)
       const username = event.target.username.value
       const password = event.target.password.value
       login(username, password)

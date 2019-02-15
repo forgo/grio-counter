@@ -29,7 +29,6 @@ export default class Navigation extends React.Component {
 
   render() {
     const { loggingIn, loggedIn, user, logout } = this.props
-    console.log('props', this.props)
 
     const linkHome = (
       <li style={styleListItem}>

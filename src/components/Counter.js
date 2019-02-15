@@ -33,14 +33,11 @@ const styleButton = {
 export default class Counter extends React.Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.calculating && !this.props.calculating) {
-      console.log('trigger')
     }
   }
 
   render() {
     const { count, incrementCounter, calculating } = this.props
-
-    console.log('count', count)
     return (
       <div style={styleContainer}>
         <div>

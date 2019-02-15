@@ -2,18 +2,18 @@ import axios from 'axios'
 import { call, delay, put, takeLatest, wait } from 'redux-saga/effects'
 
 function* whoAmI() {
-  yield axios.get('/api/whoAmI')
+  return yield axios.get('/api/whoAmI')
 }
 
 function* login(username, password) {
-  yield axios.post('/api/login', {
+  return yield axios.post('/api/login', {
     username: username,
     password: password,
   })
 }
 
 function* logout() {
-  yield axios.post('/api/logout')
+  return yield axios.post('/api/logout')
 }
 
 function* incrementCounter(count) {
@@ -23,7 +23,7 @@ function* incrementCounter(count) {
 
   const uri = `/api/increment?count=${count}`
   const uriEncoded = encodeURI(uri)
-  yield axios.get(uriEncoded)
+  return yield axios.get(uriEncoded)
 }
 
 export default {
