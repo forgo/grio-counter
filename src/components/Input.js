@@ -3,7 +3,7 @@ import React from 'react'
 const styleInputContainerDefault = {
   background: 'white',
   color: 'black',
-  height: '100%',
+  height: '2.309em',
   marginRight: '0.309em',
   boxShadow: 'inset 0 1px 1px rgba(0, 0, 0, 0.5)',
   borderRadius: '0.309em',
