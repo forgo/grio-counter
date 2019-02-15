@@ -7,7 +7,10 @@ import {
   loginSuccess,
   loginFailure,
 } from '../actions/AuthActions'
-import { errorShow, errorHide } from '../actions/ErrorActions'
+import {
+  notificationShow,
+  notificationHide,
+} from '../actions/NotificationActions'
 import { push } from 'connected-react-router'
 import { ROUTE } from '../routing'
 
@@ -23,29 +26,30 @@ function* whoAmISaga(action) {
     const user = yield call(Api.whoAmI)
     yield put(whoAmISuccess(user))
     // hide any login errors if they had not been manually dismissed
-    yield put(errorHide())
+    yield put(notificationHide())
     // redirect to home route after successful login
     yield put(push(ROUTE.home.path))
   } catch (error) {
     yield put(whoAmIFailure(error))
-    // yield put(errorShow(error.response.data.error))
   }
 }
 
 function* loginSaga(action) {
   try {
-    // insert artificial 2-second delay
+    yield put(notificationShow('Logging in...'))
+
+    // artificial 2s delay to show off UI handling of in-between states
     yield delay(2000)
 
     const user = yield call(Api.login, action.username, action.password)
     yield put(loginSuccess(user))
     // hide any login errors if they had not been manually dismissed
-    yield put(errorHide())
+    yield put(notificationHide())
     // redirect to home route after successful login
     yield put(push(ROUTE.home.path))
   } catch (error) {
     yield put(loginFailure(error))
-    yield put(errorShow(error.response.data.error))
+    yield put(notificationShow(error.response.data.error, true))
   }
 }
 

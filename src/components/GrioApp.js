@@ -1,8 +1,8 @@
 import React from 'react'
 import SecureRouteContainer from './SecureRouteContainer'
 import Layout from '../layout/Layout'
-import ErrorContainer from './ErrorContainer'
-import NavigationContainer from './NavigationContainer'
+import Header from './Header'
+import NotificationContainer from './NotificationContainer'
 import LoginRequired from './LoginRequired'
 import CounterContainer from './CounterContainer'
 
@@ -14,19 +14,10 @@ import NotFound from './NotFound'
 
 class GrioApp extends React.Component {
   render() {
-    const { loggedIn, error } = this.props
+    const { loggedIn, message, isError } = this.props
 
-    const alert = error ? <ErrorContainer /> : null
-
-    const navigation = <NavigationContainer />
-
-    const header = (
-      <div>
-        GRIO COUNTER
-        {navigation}
-      </div>
-    )
-
+    const header = <Header />
+    const alert = message ? <NotificationContainer /> : null
     const main = (
       <Switch>
         <SecureRouteContainer
@@ -46,6 +37,7 @@ class GrioApp extends React.Component {
       <Layout
         header={header}
         alert={alert}
+        alertError={isError}
         left={null}
         main={main}
         right={null}

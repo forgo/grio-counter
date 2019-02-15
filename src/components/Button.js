@@ -38,13 +38,34 @@ const styleDisableDefault = {
 }
 
 export default class Button extends React.Component {
-  componentWillMount() {
-    this.setState({
+  constructor(props) {
+    super(props)
+    this.state = {
       hovering: false,
       pressing: false,
       pressingGlobal: false,
       focusing: false,
-    })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // if (
+    //   // button was re-enabled
+    //   !this.props.disabled &&
+    //   this.props.disabled !== prevProps.disabled &&
+    //   // give it focus again only if internal focusing state was set previously
+    //   this.state.focusing
+    // ) {
+    //   this.button.focus()
+    // }
+    //
+    // if (
+    //   // button was disabled
+    //   this.props.disabled &&
+    //   this.props.disabled !== prevProps.disabled
+    // ) {
+    //   this.button.blur()
+    // }
   }
 
   componentDidMount() {
@@ -55,6 +76,13 @@ export default class Button extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('mouseup', this.handleGlobalMouseUp, false)
     document.removeEventListener('mousedown', this.handleGlobalMouseDown, false)
+  }
+
+  handleClick = event => {
+    const { onClick } = this.props
+    if (onClick) {
+      onClick(event)
+    }
   }
 
   handleMouseOver = event => {
@@ -169,7 +197,7 @@ export default class Button extends React.Component {
     return (
       <button
         style={styleMerged}
-        onClick={onClick}
+        onClick={this.handleClick}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
         onMouseDown={this.handleMouseDown}

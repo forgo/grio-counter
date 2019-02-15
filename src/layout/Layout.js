@@ -26,10 +26,12 @@ const styleFlexRow = {
 
 export default class Layout extends React.Component {
   render() {
-    const { header, alert, left, main, right, footer } = this.props
+    const { header, alert, alertError, left, main, right, footer } = this.props
 
     const headerElement = header ? <Header>{header}</Header> : null
-    const alertElement = alert ? <Alert>{alert}</Alert> : null
+    const alertElement = alert ? (
+      <Alert isError={alertError}>{alert}</Alert>
+    ) : null
     const leftElement = left ? <Left>{left}</Left> : null
     const mainElement = main ? <Main>{main}</Main> : null
     const rightElement = right ? <Right>{right}</Right> : null

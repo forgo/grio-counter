@@ -13,9 +13,11 @@ const style = (background, foreground, padding) => {
 
 class Alert extends React.Component {
   render() {
-    const { colorContext, shadowContext, spacingContext } = this.props
+    const { isError, colorContext, shadowContext, spacingContext } = this.props
 
-    const { background, foreground } = colorContext.alert
+    const { background, foreground } = isError
+      ? colorContext.alert.error
+      : colorContext.alert.info
     const { padding } = spacingContext.alert
 
     // ARIA "alert" role

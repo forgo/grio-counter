@@ -7,8 +7,14 @@ export const colors = {
       background: '#F9F9F9',
     },
     alert: {
-      foreground: '#222222',
-      background: '#F08080',
+      info: {
+        foreground: '#222222',
+        background: 'LightBlue',
+      },
+      error: {
+        foreground: '#222222',
+        background: '#F08080',
+      },
     },
     left: {
       foreground: 'green',
@@ -34,8 +40,14 @@ export const colors = {
       background: '#222222',
     },
     alert: {
-      foreground: '#F9F9F9',
-      background: '#8B0000',
+      info: {
+        foreground: '#F9F9F9',
+        background: 'DarkBlue',
+      },
+      error: {
+        foreground: '#F9F9F9',
+        background: '#8B0000',
+      },
     },
     left: {
       foreground: 'white',

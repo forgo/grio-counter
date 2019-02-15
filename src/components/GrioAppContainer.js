@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   return {
     loggedIn: state.auth.loggedIn,
     loggingIn: state.auth.loggingIn,
-    error: state.error.message,
+    message: state.notification.message,
+    isError: state.notification.isError,
   }
 }
 

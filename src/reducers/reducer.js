@@ -5,7 +5,7 @@ export const RESET_STORE = 'reset_store'
 
 import auth from './auth'
 import counter from './counter'
-import error from './error'
+import notification from './notification'
 
 export default history => {
   return (state, action) => {
@@ -18,7 +18,7 @@ export default history => {
       router: connectRouter(history),
       auth,
       counter,
-      error,
+      notification,
     })
     return appReducer(state, action)
   }

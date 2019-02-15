@@ -238,6 +238,7 @@ class Input extends React.Component {
           }}
         />
         <button
+          type="button"
           style={styleClearButtonMerged}
           onClick={this.handleClear}
           onMouseOver={this.handleMouseOverClear}

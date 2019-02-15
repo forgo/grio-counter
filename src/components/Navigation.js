@@ -34,13 +34,13 @@ export default class Navigation extends React.Component {
 
     const linkLogin = onLoginPage ? null : (
       <li style={styleListItem}>
-        <A path={ROUTE.login.path}>Login</A>
+        <A path={ROUTE.login.path}>login</A>
       </li>
     )
 
     const linkLogout = (
       <li style={styleListItem}>
-        <A onClick={this.handleLogout}>Logout</A>
+        <A onClick={this.handleLogout}>logout</A>
       </li>
     )
 

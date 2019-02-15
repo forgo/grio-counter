@@ -11,9 +11,18 @@ const styleContainer = {
   color: 'black',
 }
 
-const styleForm = {
-  display: 'flex',
-  flexDirection: 'column',
+const styleForm = disabled => {
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '0.618em',
+    background: 'rgba(0, 0, 0, 0.2)',
+    filter: disabled ? 'opacity(20%)' : 'none',
+  }
+}
+
+const styleFieldset = {
+  border: 'none',
 }
 
 const styleLabel = {
@@ -58,50 +67,46 @@ class Login extends React.Component {
     const { loggedIn, loggingIn } = this.props
 
     const loginForm = (
-      <form style={styleForm} onSubmit={this.handleSubmit}>
-        <label htmlFor="username" style={styleLabel}>
-          username
-        </label>
-        <Input
-          id="username"
-          type="text"
-          name="username"
-          placeholder="your_username"
-          onEnterKeyDown={this.handleEnterKeyDownUsername}
-          ref={x => (this.username = x)}
-          styleInputContainer={styleInputContainer}
-        />
-        <label htmlFor="password" style={styleLabel}>
-          password
-        </label>
-        <Input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="yourPassword123"
-          onEnterKeyDown={this.handleEnterKeyDownPassword}
-          ref={x => (this.password = x)}
-          styleInputContainer={styleInputContainer}
-        />
-        <Button
-          type="submit"
-          style={styleButton}
-          text="Login"
-          title="Login with credentials"
-          disabled={false}
-          disabledText={'Authenticating...'}
-          ref={x => (this.submit = x)}
-        />
+      <form style={styleForm(loggingIn)} onSubmit={this.handleSubmit}>
+        <fieldset style={styleFieldset} disabled={loggingIn}>
+          <label htmlFor="username" style={styleLabel}>
+            username
+          </label>
+          <Input
+            id="username"
+            type="text"
+            name="username"
+            placeholder="your_username"
+            onEnterKeyDown={this.handleEnterKeyDownUsername}
+            ref={x => (this.username = x)}
+            styleInputContainer={styleInputContainer}
+          />
+          <label htmlFor="password" style={styleLabel}>
+            password
+          </label>
+          <Input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="yourPassword123"
+            onEnterKeyDown={this.handleEnterKeyDownPassword}
+            ref={x => (this.password = x)}
+            styleInputContainer={styleInputContainer}
+          />
+          <Button
+            type="submit"
+            style={styleButton}
+            text="Login"
+            title="Login with credentials"
+            disabled={false}
+            disabledText={'Authenticating...'}
+            ref={x => (this.submit = x)}
+          />
+        </fieldset>
       </form>
     )
 
-    const loggingInSpinner = <span>{'reticulating splines...'}</span>
-
-    return (
-      <div style={styleContainer}>
-        {loggingIn ? loggingInSpinner : !loggedIn ? loginForm : null}
-      </div>
-    )
+    return <div style={styleContainer}>{loginForm}</div>
   }
 }
 export default Login
