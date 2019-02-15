@@ -40,12 +40,12 @@ const devEntryPoints = [
   // bundle the client for hot reloading hot reload for successful updates
   'webpack/hot/only-dev-server',
 
-  './src/index.js',
+  './frontend/index.js',
 ]
 
 const prodEntryPoints = [
   'babel-polyfill',
-  './src/index.js',
+  './frontend/index.js',
 ]
 
 module.exports = env => {

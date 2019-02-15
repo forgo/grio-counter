@@ -12,25 +12,26 @@ import {
   notificationHide,
 } from '../actions/NotificationActions'
 import { push } from 'connected-react-router'
+import HttpStatus from 'http-status-codes'
 import { ROUTE } from '../routing'
+import { notificationForError } from '../utils/notificationUtil'
 
 import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import Api from '../api/Api'
 
-function delete_cookie(name) {
-  document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-}
-
 function* whoAmISaga(action) {
   try {
+    // repopulate redux user auth info from token cookie (if still valid)
     const user = yield call(Api.whoAmI)
     yield put(whoAmISuccess(user))
-    // hide any login errors if they had not been manually dismissed
+    // hide any notifications
     yield put(notificationHide())
-    // redirect to home route after successful login
-    yield put(push(ROUTE.home.path))
   } catch (error) {
-    yield put(whoAmIFailure(error))
+    // Don't notify for these errors because this action is performed on refresh
+
+    // The failure action still exists to ensure we toggle a `loggingIn` state
+    // to avoid any glitchy in-between refresh UI states
+    yield put(whoAmIFailure())
   }
 }
 
@@ -38,8 +39,8 @@ function* loginSaga(action) {
   try {
     yield put(notificationShow('Logging in...'))
 
-    // artificial 2s delay to show off UI handling of in-between states
-    yield delay(2000)
+    // artificial 200ms delay to show off UI handling of in-between states
+    yield delay(200)
 
     const user = yield call(Api.login, action.username, action.password)
     yield put(loginSuccess(user))
@@ -48,18 +49,21 @@ function* loginSaga(action) {
     // redirect to home route after successful login
     yield put(push(ROUTE.home.path))
   } catch (error) {
-    yield put(loginFailure(error))
-    yield put(notificationShow(error.response.data.error, true))
+    yield put(loginFailure())
+    yield notificationForError(error)
   }
 }
 
 function* logoutSaga(action) {
   try {
     const logoutResponse = yield call(Api.logout)
-    delete_cookie('token')
-    // redirect to home route after successful login
+    // redirect to home route after successful logout
     yield put(push(ROUTE.login.path))
-  } catch (error) {}
+  } catch (error) {
+    console.log('error', JSON.stringify(error, null, 2))
+    // redirect to home route after anomalous logout
+    yield put(push(ROUTE.login.path))
+  }
 }
 
 // saga watcher triggered when dispatching LOGIN action

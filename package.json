@@ -2,11 +2,12 @@
   "name": "grio-counter",
   "version": "1.0.0",
   "description": "### Take-home assignment 1. Choose a frontend framework. 2. Choose a backend technology. 3. Build the following feature using the provided stories. 4. Push it up to github and let us know when it’s ready and where to find it!",
-  "main": "src/index.js",
+  "main": "frontend/index.js",
   "scripts": {
-    "server": "node backend/server.js",
-    "dev": "webpack-dev-server --mode development --progress --colors",
-    "format": "prettier --config .prettierrc.json --write 'src/**/*.js' 'backend/**/*.js'",
+    "dev": "npm run backend & npm run frontend",
+    "backend": "node backend/server.js",
+    "frontend": "webpack-dev-server --mode development --progress --colors",
+    "format": "prettier --config .prettierrc.json --write 'frontend/**/*.js' 'backend/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

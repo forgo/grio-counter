@@ -57,15 +57,15 @@ app.post('/api/login', function(req, res) {
 
   User.findOne({ username }, (err, user) => {
     if (err) {
-      responseError(res, 'Internal error please try again')
+      responseError(res, 'Internal server error')
     } else if (!user) {
-      responseBadCredentials(res, 'Incorrect username or password')
+      responseBadCredentials(res, 'Bad credentials')
     } else {
       User.checkPassword(user, password, (err, same) => {
         if (err) {
-          responseError(res, 'Internal error please try again')
+          responseError(res, 'Internal server error')
         } else if (!same) {
-          responseBadCredentials(res, 'Incorrect username or password')
+          responseBadCredentials(res, 'Bad credentials')
         } else {
           responseAuthenticated(res, username)
         }

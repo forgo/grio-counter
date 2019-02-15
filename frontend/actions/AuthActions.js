@@ -14,10 +14,9 @@ export const whoAmISuccess = user => {
 }
 
 export const WHO_AM_I_FAILURE = 'WHO_AM_I_FAILURE'
-export const whoAmIFailure = error => {
+export const whoAmIFailure = () => {
   return {
     type: WHO_AM_I_FAILURE,
-    error: error,
   }
 }
 
@@ -39,10 +38,9 @@ export const loginSuccess = user => {
 }
 
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
-export const loginFailure = error => {
+export const loginFailure = () => {
   return {
     type: LOGIN_FAILURE,
-    error: error,
   }
 }
 

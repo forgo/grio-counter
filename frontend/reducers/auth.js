@@ -13,7 +13,6 @@ export const initialState = Immutable({
   loggingIn: false,
   loggedIn: false,
   user: undefined,
-  error: undefined,
 })
 
 export default function auth(state = initialState, action) {
@@ -40,9 +39,7 @@ export default function auth(state = initialState, action) {
         .set('user', action.user)
       return responseSuccessState
     case LOGIN_FAILURE:
-      const responseFailureState = state
-        .set('loggingIn', false)
-        .set('error', JSON.stringify(action.error, null, 2))
+      const responseFailureState = state.set('loggingIn', false)
       return responseFailureState
     case LOGOUT:
       const logoutState = state.set('user', undefined).set('loggedIn', false)
