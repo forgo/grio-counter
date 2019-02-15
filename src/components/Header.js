@@ -1,5 +1,6 @@
 import React from 'react'
 import NavigationContainer from './NavigationContainer'
+import { fontFamilySerif } from '../utils/fontUtil'
 
 const styleContainer = {
   display: 'flex',
@@ -7,7 +8,12 @@ const styleContainer = {
   alignItems: 'center',
 }
 
-const styleH1 = { fontSize: '1.618em', margin: 0, padding: 0 }
+const styleH1 = {
+  fontFamily: fontFamilySerif(),
+  fontSize: '1.618em',
+  margin: 0,
+  padding: 0,
+}
 
 class Header extends React.Component {
   render() {

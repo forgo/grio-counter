@@ -76,7 +76,6 @@ app.post('/api/login', function(req, res) {
 
 app.post('/api/logout', function(req, res) {
   const cookies = req.cookies
-  console.log('cookies', JSON.stringify(cookies, null, 2))
   for (let prop in cookies) {
     if (!cookies.hasOwnProperty(prop)) {
       continue

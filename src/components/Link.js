@@ -1,8 +1,10 @@
 import React from 'react'
 import { ROUTE } from '../routing'
+import { fontFamilySansSerif } from '../utils/fontUtil'
 
 const styleDefault = {
   color: 'DeepSkyBlue',
+  fontFamily: fontFamilySansSerif(),
 }
 
 const styleHoverDefault = {

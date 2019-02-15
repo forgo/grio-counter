@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../layout/Layout'
+import { fontFamilySansSerif } from '../utils/fontUtil'
 
 const bgColor = 'green'
 const bgColorDark = 'DarkGreen'
@@ -17,6 +18,7 @@ const styleDefault = {
   fontSize: '1em',
   margin: 0,
   padding: '0.618em',
+  fontFamily: fontFamilySansSerif(),
 }
 
 const styleHoverDefault = {

@@ -2,6 +2,7 @@ import React from 'react'
 import Input from './Input'
 import Button from './Button'
 import { boxShadowNormal } from '../contexts/ShadowContext'
+import { fontFamilySansSerif } from '../utils/fontUtil'
 
 const styleContainer = {
   display: 'flex',
@@ -27,8 +28,8 @@ const styleFieldset = {
 
 const styleLabel = {
   display: 'block',
-  fontWeight: 'bold',
   margin: '0 0 0.309em 0',
+  fontFamily: fontFamilySansSerif(),
 }
 
 const styleInputContainer = {
@@ -96,8 +97,8 @@ class Login extends React.Component {
           <Button
             type="submit"
             style={styleButton}
-            text="Login"
-            title="Login with credentials"
+            text="log in"
+            title="log in with credentials"
             disabled={false}
             disabledText={'Authenticating...'}
             ref={x => (this.submit = x)}

@@ -38,6 +38,10 @@ input::-ms-clear {
   border: 0;
 }
 
+:-moz-focusring {
+  outline: 2px dashed white;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #EEE;
   opacity: 1; /* Firefox */
