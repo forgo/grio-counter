@@ -10,10 +10,6 @@ const UsersDB = db.addCollection('users')
 // create mock user credentials for demo
 const seed_users = [
   {
-    username: 'elliott_user',
-    password: 'p',
-  },
-  {
     username: 'test_user',
     password: 'test_password',
   },
