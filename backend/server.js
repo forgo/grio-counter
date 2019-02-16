@@ -8,6 +8,11 @@ const port = 3000
 
 const app = express()
 
+// NOTE: I'm not handling HTTPS or CORS because this demo is not
+// intended to deployed outside of a `localhost` context, and the
+// overhead to implementing these features outweighed the benefit
+// of including them, when I could demonstrate skills in other areas
+
 // helmet helps secure the api by setting various HTTP headers
 // by default, the following middleware are applied:
 // - dnsPrefetchControl: controls browser DNS prefetching
