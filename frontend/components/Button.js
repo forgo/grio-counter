@@ -22,7 +22,7 @@ const styleDefault = {
 }
 
 const styleHoverDefault = {
-  filter: 'brightness(130.9%)'
+  filter: 'brightness(130.9%)',
 }
 
 const stylePressDefault = {

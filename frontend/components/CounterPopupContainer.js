@@ -3,7 +3,6 @@ import CounterPopup from './CounterPopup'
 import { popupCancel, popupConfirm } from '../actions/CounterActions'
 
 const mapStateToProps = state => {
-  console.log('state.counter.popup', state.counter.popup)
   return {
     count: state.counter.count,
     nextCount: state.counter.nextCount,

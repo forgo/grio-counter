@@ -7,9 +7,7 @@ import {
   loginSuccess,
   loginFailure,
 } from '../actions/AuthActions'
-import {
-  popupConfirm,
-} from '../actions/CounterActions'
+import { popupConfirm } from '../actions/CounterActions'
 import {
   notificationShow,
   notificationHide,
@@ -26,7 +24,6 @@ function* whoAmISaga(action) {
   try {
     // repopulate redux user auth info from token cookie (if still valid)
     const user = yield call(Api.whoAmI)
-    console.log('user', user)
     yield put(whoAmISuccess(user))
     // hide any notifications
     yield put(notificationHide())
@@ -51,7 +48,7 @@ function* loginSaga(action) {
     // hide any login errors if they had not been manually dismissed
     yield put(notificationHide())
     // reset count to "0" on logout
-    yield put(popupConfirm("0"))
+    yield put(popupConfirm('0'))
     // redirect to home route after successful login
     yield put(push(ROUTE.home.path))
   } catch (error) {
@@ -66,7 +63,6 @@ function* logoutSaga(action) {
     // redirect to home route after successful logout
     yield put(push(ROUTE.login.path))
   } catch (error) {
-    console.log('error', JSON.stringify(error, null, 2))
     // redirect to home route after anomalous logout
     yield put(push(ROUTE.login.path))
   }
