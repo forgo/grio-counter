@@ -8,6 +8,9 @@ import {
   loginFailure,
 } from '../actions/AuthActions'
 import {
+  popupConfirm,
+} from '../actions/CounterActions'
+import {
   notificationShow,
   notificationHide,
 } from '../actions/NotificationActions'
@@ -47,6 +50,8 @@ function* loginSaga(action) {
     yield put(loginSuccess(user))
     // hide any login errors if they had not been manually dismissed
     yield put(notificationHide())
+    // reset count to "0" on logout
+    yield put(popupConfirm("0"))
     // redirect to home route after successful login
     yield put(push(ROUTE.home.path))
   } catch (error) {
