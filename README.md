@@ -108,9 +108,9 @@ Cookie: name = 'token', value = <signed, valid JWT>
 ```
 
 ### GET /api/increment
-This endpoint is the sole purpose (outside of authentication) of this api. It implements the `withAuth` middleware to ensure that whoever uses this endpoint must have a valid token to access it.
+This endpoint takes a single query param `count`, represented as an integer string, and responds with a next count based on a basic formula. This endpoint implements the `withAuth` middleware to ensure whoever uses it must have a valid token.
 
-The endpoint takes a single query param `count` which is represented as an integer string. Represented as an integer, the basic logic of this endpoint is to take the provided count, and respond with an updated count, using the following calculation:
+In summary, the calculation is effectively:
 
 `nextCount = count === 0 ? 1 : count * 2`
 
