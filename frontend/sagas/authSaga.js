@@ -23,6 +23,7 @@ function* whoAmISaga(action) {
   try {
     // repopulate redux user auth info from token cookie (if still valid)
     const user = yield call(Api.whoAmI)
+    console.log('user', user)
     yield put(whoAmISuccess(user))
     // hide any notifications
     yield put(notificationHide())
@@ -40,7 +41,7 @@ function* loginSaga(action) {
     yield put(notificationShow('Logging in...'))
 
     // artificial 200ms delay to show off UI handling of in-between states
-    yield delay(200)
+    yield delay(500)
 
     const user = yield call(Api.login, action.username, action.password)
     yield put(loginSuccess(user))
