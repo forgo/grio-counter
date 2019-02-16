@@ -1,5 +1,18 @@
 # grio-counter
 
+### Quick Start
+
+##### Run the frontend and backend simultaneously.
+`npm run dev`
+
+##### Frontend (React.js, Redux, Redux-Saga, webpack, etc.)
+`npm run frontend`
+
+##### Backend (Express.js, jsonwebtoken, bcrypt, big-integer, etc.)
+`npm run backend`
+
+
+
 ### Take-home assignment
 1. Choose a frontend framework.
 2. Choose a backend technology.
