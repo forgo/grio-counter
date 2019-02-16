@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../layout/Layout'
 import Button from './Button'
+import CounterPopupContainer from './CounterPopupContainer'
 import { boxShadowNormal } from '../contexts/ShadowContext'
 
 const styleContainer = {
@@ -10,14 +11,21 @@ const styleContainer = {
   justifyContent: 'center',
 }
 
-const styleCount = {
+const styleCountContainer = {
+  display: 'flex',
+  marginRight: '1ex',
   fontSize: '3em',
-  // background: 'blue',
   color: 'black',
-  // borderRadius: '0.618em',
-  textAlign: 'center',
-  padding: '0.309em 0.618em',
-  margin: '0 0 0.309em 0',
+}
+
+const styleCountLabel = {
+  marginRight: '1ex',
+  fontWeight: 'bold',
+}
+
+const styleCount = {
+  display: 'flex',
+  flexWrap: 'wrap',
   transition: 'font-size 1s',
 }
 
@@ -37,20 +45,33 @@ export default class Counter extends React.Component {
   }
 
   render() {
-    const { count, incrementCounter, calculating } = this.props
+    const { count, incrementCounter, popupShow, calculating } = this.props
+
+    const wrappableCount = [...count].map((c, index) => {
+      return <span key={index}>{c}</span>
+    })
+
     return (
       <div style={styleContainer}>
-        <div>
-          <div style={styleCount}>{count.toString()}</div>
+        <div style={{ display: 'flex' }}>
+          <div style={styleCountContainer}>
+            <label htmlFor="count" style={styleCountLabel}>
+              Count:
+            </label>
+            <output id="count" name="count" style={styleCount}>
+              {wrappableCount}
+            </output>
+          </div>
           <Button
             style={styleButton}
             text="Increment"
-            title="Increment counter"
-            onClick={() => incrementCounter(parseInt(count))}
+            title="Confirm or cancel increment popup"
+            onClick={() => popupShow(count)}
             disabled={calculating}
             disabledText={'Calculating...'}
           />
         </div>
+        <CounterPopupContainer />
       </div>
     )
   }

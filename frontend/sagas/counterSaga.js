@@ -1,27 +1,39 @@
 import {
+  POPUP_SHOW,
+  popupCancel,
   INCREMENT_COUNTER,
+  incrementCounter,
   incrementCounterSuccess,
   incrementCounterFailure,
 } from '../actions/CounterActions'
 import { notificationShow } from '../actions/NotificationActions'
+import { notificationForError } from '../utils/notificationUtil'
 
-import { call, delay, put, takeLatest } from 'redux-saga/effects'
+import { call, delay, put, select, takeLatest } from 'redux-saga/effects'
 import Api from '../api/Api'
 
-function* incrementCounterSaga(action) {
+function* popupShowSaga(action) {
   try {
-    // artificial 200ms delay to show off UI handling of in-between states
-    yield delay(200)
+    // extract redux state in saga
+    const state = yield select()
+    const count = state.counter.count
+    let nextCount = state.counter.nextCount
 
-    const incrementReponse = yield call(Api.incrementCounter, action.count)
-    const nextCount = incrementReponse.data.count
+    // avoid unnecessary requests for nextCount on backend if POPUP_SHOW
+    // action did this previously
+    if (!nextCount) {
+      const incrementReponse = yield call(Api.incrementCounter, action.count)
+      nextCount = incrementReponse.data.count
+    }
+
     yield put(incrementCounterSuccess(nextCount))
   } catch (error) {
-    yield put(incrementCounterFailure(error))
-    yield put(notificationShow(error.response.data.error, true))
+    // hide the popup and persist existing count
+    yield put(popupCancel())
+    yield notificationForError(error, error.response.data.error, true)
   }
 }
 
 export default function* counterSaga() {
-  yield takeLatest(INCREMENT_COUNTER, incrementCounterSaga)
+  yield takeLatest(POPUP_SHOW, popupShowSaga)
 }

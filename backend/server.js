@@ -2,6 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const cookieParser = require('cookie-parser')
+const bigInt = require('big-integer')
 
 const HttpStatus = require('http-status-codes')
 
@@ -32,7 +33,7 @@ const responseBadCredentials = (response, error) => {
 const responseAuthenticated = (response, username) => {
   // Issue token
   const payload = { username }
-  const options = { expiresIn: '1h' }
+  const options = { expiresIn: '30m' }
   const token = jwt.sign(payload, secret, options)
 
   // tells browsers not to allow client-side script access to cookie
@@ -99,14 +100,30 @@ app.get('/api/whoAmI', withAuth, function(req, res) {
 
 app.get('/api/increment', withAuth, function(req, res) {
   const { count } = req.query
-  const countInteger = parseInt(count)
-  if (count && Number.isInteger(countInteger)) {
-    res
-      .status(HttpStatus.OK)
-      .json({ count: countInteger === 0 ? 1 : countInteger * 2 })
-  } else {
+
+  const bigIncrement = countString => {
+    const base = 10
+    const alphabet = ['0123456789']
+
+    bigInt(count)
+    let newCountString = undefined
+    if (bigInt(count).isZero()) {
+      newCountString = bigInt.one.toString()
+    } else {
+      newCountString = bigInt(count)
+        .multiply(2)
+        .toString()
+    }
+    return newCountString
+  }
+
+  try {
+    const newCount = bigIncrement(count)
+    res.status(HttpStatus.OK).json({ count: newCount })
+  } catch (error) {
+    console.log('bigIncrement catch', JSON.stringify(error, null, 3))
     res
       .status(HttpStatus.BAD_REQUEST)
-      .json({ error: 'count must be an integer to increment' })
+      .json({ error: 'count must be parseable as big-integer string' })
   }
 })

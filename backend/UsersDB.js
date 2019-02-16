@@ -11,7 +11,7 @@ const UsersDB = db.addCollection('users')
 const seed_users = [
   {
     username: 'elliott_user',
-    password: 'elliott_password',
+    password: 'p',
   },
   {
     username: 'test_user',

@@ -1,14 +1,20 @@
 import Immutable from 'seamless-immutable'
 import {
+  POPUP_SHOW,
+  POPUP_CANCEL,
+  POPUP_CONFIRM,
   INCREMENT_COUNTER,
   INCREMENT_COUNTER_SUCCESS,
   INCREMENT_COUNTER_FAILURE,
 } from '../actions/CounterActions'
 
 export const initialState = Immutable({
-  count: 0,
+  // storing count as a string to utilize big-integer library on backend
+  // and allow the number to be displayed accurately past integer overflow
+  count: '0',
+  nextCount: undefined,
   calculating: false,
-  error: undefined,
+  popup: false,
 })
 
 export default function counter(state = initialState, action) {
@@ -19,13 +25,25 @@ export default function counter(state = initialState, action) {
     case INCREMENT_COUNTER_SUCCESS:
       const responseSuccessState = state
         .set('calculating', false)
-        .set('count', action.count)
+        .set('nextCount', action.nextCount)
       return responseSuccessState
     case INCREMENT_COUNTER_FAILURE:
       const responseFailureState = state
         .set('calculating', false)
-        .set('error', JSON.stringify(action.error, null, 2))
+        .set('nextCount', undefined)
       return responseFailureState
+    case POPUP_SHOW:
+      const popupShowState = state.set('popup', true)
+      return popupShowState
+    case POPUP_CANCEL:
+      const popupCancelState = state.set('popup', false)
+      return popupCancelState
+    case POPUP_CONFIRM:
+      const popupConfirmState = state
+        .set('popup', false)
+        .set('count', action.nextCount)
+        .set('nextCount', undefined)
+      return popupConfirmState
     default:
       return state
   }

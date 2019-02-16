@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Counter from './Counter'
-import { incrementCounter } from '../actions/CounterActions'
+import { incrementCounter, popupShow } from '../actions/CounterActions'
 
 const mapStateToProps = state => {
   return {
@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     incrementCounter: count => dispatch(incrementCounter(count)),
+    popupShow: count => dispatch(popupShow(count)),
   }
 }
 
