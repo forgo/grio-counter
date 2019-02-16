@@ -7,5 +7,5 @@ export const fontFamilySansSerif = () => {
 }
 
 export const fontFamilyMonospace = () => {
-  return "'Courier New', Courier, monospace"
+  return "'Source Code Pro', 'Courier New', Courier, monospace"
 }

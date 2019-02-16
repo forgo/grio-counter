@@ -7,6 +7,7 @@ import sagaMiddleware from './sagas/sagaMiddleware'
 import sagas from './sagas/sagas'
 import { whoAmI } from './actions/AuthActions'
 
+import './style/fonts.css'
 import './style/global.css'
 import './style/media.css'
 

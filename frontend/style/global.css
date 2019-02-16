@@ -43,7 +43,7 @@ input::-ms-clear {
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #EEE;
+  color: #DDD;
   opacity: 1; /* Firefox */
 }
 

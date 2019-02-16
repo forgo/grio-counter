@@ -77,7 +77,7 @@ class Login extends React.Component {
             id="username"
             type="text"
             name="username"
-            placeholder="your_username"
+            placeholder="enter username"
             onEnterKeyDown={this.handleEnterKeyDownUsername}
             ref={x => (this.username = x)}
             styleInputContainer={styleInputContainer}
@@ -89,7 +89,7 @@ class Login extends React.Component {
             id="password"
             type="password"
             name="password"
-            placeholder="yourPassword123"
+            placeholder="enter password"
             onEnterKeyDown={this.handleEnterKeyDownPassword}
             ref={x => (this.password = x)}
             styleInputContainer={styleInputContainer}

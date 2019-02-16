@@ -1,4 +1,5 @@
 import React from 'react'
+import { fontFamilyMonospace } from '../utils/fontUtil'
 
 const styleInputContainerDefault = {
   background: 'white',
@@ -9,6 +10,7 @@ const styleInputContainerDefault = {
   borderRadius: '0.309em',
   display: 'flex',
   position: 'relative',
+  fontFamily: fontFamilyMonospace(),
 }
 
 const styleInputContainerFocusDefault = {

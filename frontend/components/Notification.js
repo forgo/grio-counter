@@ -14,8 +14,8 @@ const styleButton = {
 }
 
 const styleButtonHover = {
-  background: '#F9F9F9',
-  color: '#222222',
+  background: 'none',
+  textDecoration: 'underline',
 }
 
 class Notification extends React.Component {
