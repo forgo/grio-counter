@@ -59,9 +59,17 @@ class Login extends React.Component {
     this.password.input.focus()
   }
 
+  handleTabKeyDownUsername = value => {
+    this.password.input.focus()
+  }
+
   handleEnterKeyDownPassword = value => {
     this.submit.button.focus()
     this.submit.button.click()
+  }
+
+  handleTabKeyDownPassword = value => {
+    this.submit.button.focus()
   }
 
   render() {
@@ -79,6 +87,7 @@ class Login extends React.Component {
             name="username"
             placeholder="enter username"
             onEnterKeyDown={this.handleEnterKeyDownUsername}
+            onTabKeyDown={this.handleTabKeyDownUsername}
             ref={x => (this.username = x)}
             styleInputContainer={styleInputContainer}
           />
@@ -91,6 +100,7 @@ class Login extends React.Component {
             name="password"
             placeholder="enter password"
             onEnterKeyDown={this.handleEnterKeyDownPassword}
+            onTabKeyDown={this.handleTabKeyDownPassword}
             ref={x => (this.password = x)}
             styleInputContainer={styleInputContainer}
           />

@@ -98,12 +98,18 @@ class Input extends React.Component {
   }
 
   handleKeyDown = event => {
-    const { onEnterKeyDown } = this.props
+    const { onEnterKeyDown, onTabKeyDown } = this.props
     const ENTER_KEY = 13
+    const TAB_KEY = 9
     if (event.keyCode === ENTER_KEY) {
       event.preventDefault()
       if (onEnterKeyDown) {
         onEnterKeyDown(event.target.value)
+      }
+    } else if (event.keyCode === TAB_KEY) {
+      event.preventDefault()
+      if (onTabKeyDown) {
+        onTabKeyDown(event.target.value)
       }
     }
   }
