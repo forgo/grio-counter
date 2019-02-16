@@ -106,7 +106,7 @@ class Input extends React.Component {
       if (onEnterKeyDown) {
         onEnterKeyDown(event.target.value)
       }
-    } else if (event.keyCode === TAB_KEY) {
+    } else if (event.keyCode === TAB_KEY && !event.shiftKey) {
       event.preventDefault()
       if (onTabKeyDown) {
         onTabKeyDown(event.target.value)
