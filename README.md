@@ -1,15 +1,24 @@
 # grio-counter
 
-### Quick Start
+##### Quick Start
+````
+# run frontend and backend simultaneously
+npm run dev
+````
 
-##### Run the frontend and backend simultaneously.
-`npm run dev`
+##### Frontend
+```
+# http://localhost:8080
+# React.js, Redux, Redux-Saga, webpack, etc.
+npm run frontend
+```
 
-##### Frontend (React.js, Redux, Redux-Saga, webpack, etc.)
-`npm run frontend`
-
-##### Backend (Express.js, jsonwebtoken, bcrypt, big-integer, etc.)
-`npm run backend`
+##### Backend
+```
+# http://localhost:3000
+# Express.js, jsonwebtoken, bcrypt, big-integer, etc.
+npm run backend
+```
 
 
 
