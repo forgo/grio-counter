@@ -1,6 +1,6 @@
 # grio-counter
 
-##### Quick Start
+## Quick Start
 ````
 # run frontend and backend simultaneously
 npm run dev
@@ -16,23 +16,23 @@ npm run dev
 
 If you want to run the backend and frontend separately, use the following scripts.
 
-##### Frontend
+## Frontend
 ```
 # http://localhost:8080
 # React.js, Redux, Redux-Saga, webpack, etc.
 npm run frontend
 ```
 
-##### Backend
+## Backend
 ```
 # http://localhost:3000
 # Express.js, LokiJS, jsonwebtoken, bcrypt, big-integer, etc.
 npm run backend
 ```
-##### API Endpoints
+## API Endpoints
 http://localhost:3000
 
-###### POST /api/login
+### POST /api/login
 
 This endpoint is used by the login form to submit a username and password. For demo purposes, these credentials are tested against an in-memory LokiJS database, and seeded with some dummy usernames and hashed passwords upon the Express.js Node service starting up.
 
@@ -42,7 +42,7 @@ The JWT is signed with a secret key that is insecurely hard-coded for demo purpo
 
 Any endpoints which employ the `withAuth` middleware (`/api/whoAmI` and `/api/increment`) will be secured based on the user having a valid, non-expired version of this `token` cookie in their request.
 
-Example: valid credentials
+#### Example: valid credentials
 ```
 # request body
 {
@@ -57,7 +57,7 @@ Cookie: name = 'token', value = <signed JWT>
   JWT payload: { 'username': 'test_user', exp: <30 minute expiration date>, ... }
 ```
 
-Example: invalid credentials
+#### Example: invalid credentials
 ```
 # request body
 {
@@ -69,12 +69,12 @@ Example: invalid credentials
 401 UNAUTHORIZEED
 ```
 
-###### POST /api/logout
+### POST /api/logout
 This endpoint allows removes the `token` cookie that is generated upon a successful login. This is important from the UI perspective as it will force the authentication middleware to send a HTTP 401 status on subsequent calls to secure endpoints. 
 
 The HTTP 401 status could either be because the token was not supplied, expired, or invalid for any other reason. In any case, the UI can now use this response to act accordingly by setting it's authentication state and redirecting to a login page.
 
-Example: valid logout
+#### Example: valid logout
 ```
 # request body
 <empty>
@@ -85,12 +85,12 @@ Example: valid logout
 Cookie: name = 'token', value = <does not exist>
 ```
 
-###### GET /api/whoAmI
+### GET /api/whoAmI
 This endpoint is used as an initial-condition and on-browser-refresh validation of an existing `token` cookie the user may have. Without this, the browser app could easily get confused about the state of authentication stored in Redux, as the Redux state is inherently re-initialized on refresh. 
 
 If there's still a valid `token` cookie, then hitting this endpoint will confirm that by responding with an HTTP 200 status and a `user` payload. The payload is cleaned on the server side to prevent sensitive user information from being passed.
 
-Example: valid whoAmI
+#### Example: valid whoAmI
 ```
 # request cookie
 Cookie: name = 'token', value = <signed, valid JWT>
@@ -104,7 +104,7 @@ Cookie: name = 'token', value = <signed, valid JWT>
 }
 ```
 
-###### GET /api/increment
+### GET /api/increment
 This endpoint is the sole purpose (outside of authentication) of this api. It implements the `withAuth` middleware to ensure that whoever uses this endpoint must have a valid token to access it.
 
 The endpoint takes a single query param `count` which is represented as an integer string. Represented as an integer, the basic logic of this endpoint is to take the provided count, and respond with an updated count, using the following calculation:
@@ -133,7 +133,7 @@ const bigIncrement = countString => {
 }
 ```
 
-Example: valid increment
+#### Example: valid increment
 ```
 # request
 GET http://localhost:3000/api/increment&count=0
@@ -145,7 +145,7 @@ GET http://localhost:3000/api/increment&count=0
 1
 ```
 
-Example: invalid increment
+#### Example: invalid increment
 ```
 # request
 GET http://localhost:3000/api/increment&count=asdf
@@ -160,7 +160,7 @@ GET http://localhost:3000/api/increment&count=asdf
 
 ---
 
-### Take-home assignment
+## Take-home assignment
 1. Choose a frontend framework.
 2. Choose a backend technology.
 3. Build the following feature using the provided stories.
