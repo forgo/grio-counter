@@ -22,9 +22,7 @@ const styleDefault = {
 }
 
 const styleHoverDefault = {
-  filter: 'brightness(130.9%)',
-  // background: `linear-gradient(${bgColorDark}, ${bgColor})`,
-  // backgroundSize: 'cover',
+  filter: 'brightness(130.9%)'
 }
 
 const stylePressDefault = {
@@ -49,26 +47,6 @@ export default class Button extends React.Component {
       pressingGlobal: false,
       focusing: false,
     }
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    // if (
-    //   // button was re-enabled
-    //   !this.props.disabled &&
-    //   this.props.disabled !== prevProps.disabled &&
-    //   // give it focus again only if internal focusing state was set previously
-    //   this.state.focusing
-    // ) {
-    //   this.button.focus()
-    // }
-    //
-    // if (
-    //   // button was disabled
-    //   this.props.disabled &&
-    //   this.props.disabled !== prevProps.disabled
-    // ) {
-    //   this.button.blur()
-    // }
   }
 
   componentDidMount() {
