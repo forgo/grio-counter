@@ -3,6 +3,7 @@ import Layout from '../layout/Layout'
 import Button from './Button'
 import CounterPopupContainer from './CounterPopupContainer'
 import { boxShadowNormal } from '../contexts/ShadowContext'
+import { fontFamilySerif, fontFamilyMonospace } from '../utils/fontUtil'
 
 const styleContainer = {
   display: 'flex',
@@ -15,18 +16,20 @@ const styleCountContainer = {
   display: 'flex',
   marginRight: '1ex',
   fontSize: '3em',
-  color: 'black',
+  color: '#F9F9F9',
 }
 
 const styleCountLabel = {
   marginRight: '1ex',
   fontWeight: 'bold',
+  fontFamily: fontFamilySerif(),
 }
 
 const styleCount = {
   display: 'flex',
   flexWrap: 'wrap',
   transition: 'font-size 1s',
+  fontFamily: fontFamilyMonospace(),
 }
 
 const styleCountUpdate = {

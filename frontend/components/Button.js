@@ -22,8 +22,9 @@ const styleDefault = {
 }
 
 const styleHoverDefault = {
-  background: `linear-gradient(${bgColorDark}, ${bgColor})`,
-  backgroundSize: 'cover',
+  filter: 'brightness(130.9%)',
+  // background: `linear-gradient(${bgColorDark}, ${bgColor})`,
+  // backgroundSize: 'cover',
 }
 
 const stylePressDefault = {

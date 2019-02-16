@@ -4,13 +4,13 @@ import { withTheme } from '../contexts/ThemeConsumer'
 const pattern = require('../img/pattern.png')
 
 const stylePattern = {
-  // background: `url(${pattern}) repeat`,
-  backgroundSize: '1.618em',
+  background: `url(${pattern}) repeat`,
+  // backgroundSize: '1.618em',
 }
 
 const styleGradient = {
   background:
-    'linear-gradient(0deg, rgba(100, 100, 100, .5) 0%, rgba(225, 225, 225, .5) 100%)',
+    'linear-gradient(0deg, rgba(100, 100, 100, .1) 0%, rgba(225, 225, 225, .1) 100%)',
 }
 
 class Background extends React.Component {

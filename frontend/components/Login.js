@@ -9,7 +9,7 @@ const styleContainer = {
   width: '100%',
   alignItems: 'center',
   justifyContent: 'center',
-  color: 'black',
+  color: '#F9F9F9',
 }
 
 const styleForm = disabled => {

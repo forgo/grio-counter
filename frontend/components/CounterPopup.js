@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button'
+import { fontFamilySerif, fontFamilyMonospace } from '../utils/fontUtil'
 
 const styleContainer = display => {
   return {
@@ -28,24 +29,45 @@ const styleContent = {
 
 const styleCountWrapper = {
   margin: '0 0 1.618em 0',
+  width: '100%',
 }
 
 const styleCountLabel = {
   fontWeight: 'bold',
   display: 'block',
+  textAlign: 'center',
   textDecoration: 'underline',
+  fontFamily: fontFamilySerif(),
+  fontSize: '1.618em',
 }
 
 const styleCount = {
   display: 'block',
   textAlign: 'center',
+  fontFamily: fontFamilyMonospace(),
+  fontSize: '1.618em',
+}
+
+const styleActions = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: '100%',
 }
 
 const styleCancelButton = {
-  background: 'red',
+  background: '#8B0000',
+  marginRight: '1em',
+}
+
+const styleCancelButtonFocus = {
+  outline: '2px dashed black',
 }
 
 const styleConfirmButton = {}
+
+const styleConfirmButtonFocus = {
+  outline: '2px dashed black',
+}
 
 class CounterPopup extends React.Component {
   render() {
@@ -83,9 +105,10 @@ class CounterPopup extends React.Component {
             </output>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={styleActions}>
             <Button
               style={styleCancelButton}
+              styleFocus={styleCancelButtonFocus}
               text="Cancel"
               title="Cancel increment counter"
               onClick={popupCancel}
@@ -93,6 +116,7 @@ class CounterPopup extends React.Component {
             />
             <Button
               style={styleConfirmButton}
+              styleFocus={styleConfirmButtonFocus}
               text="Confirm"
               title="Confirm increment counter"
               onClick={() => popupConfirm(nextCount)}
