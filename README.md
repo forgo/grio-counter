@@ -2,6 +2,9 @@
 
 ## Quick Start
 ````
+# install dependencies
+npm i
+
 # run frontend and backend simultaneously
 npm run dev
 ````
